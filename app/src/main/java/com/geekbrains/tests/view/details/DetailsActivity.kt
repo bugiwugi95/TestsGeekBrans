@@ -22,10 +22,15 @@ class DetailsActivity : AppCompatActivity(), ViewDetailsContract {
 
     private fun setUI() {
         val count = intent.getIntExtra(TOTAL_COUNT_EXTRA, 0)
-        presenter.setCounter(count)
+        presenter.onAttach(this)
         setCountText(count)
         decrementButton.setOnClickListener { presenter.onDecrement() }
         incrementButton.setOnClickListener { presenter.onIncrement() }
+    }
+
+    override fun onDestroy() {
+        presenter.onDetach()
+        super.onDestroy()
     }
 
     override fun setCount(count: Int) {
