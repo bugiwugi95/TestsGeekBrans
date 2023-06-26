@@ -24,6 +24,8 @@ class SearchPresenterTest {
     @Mock
     private lateinit var viewContract: ViewSearchContract
 
+
+
     @Before
     fun setUp() {
         //Обязательно для аннотаций "@Mock"
