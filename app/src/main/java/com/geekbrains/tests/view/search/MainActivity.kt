@@ -27,7 +27,17 @@ class MainActivity : AppCompatActivity(), ViewSearchContract {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setUI()
+        setSearchButton()
         presenter.onAttach(this)
+    }
+
+    private fun setSearchButton() {
+        searchButton.setOnClickListener {
+            val query = searchEditText.text.toString()
+            if (query.isNotBlank()) {
+                presenter.searchGitHub(query)
+            }
+        }
     }
 
     override fun onDestroy() {
